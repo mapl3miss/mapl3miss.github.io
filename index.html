@@ -310,7 +310,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -350,7 +350,7 @@
         <div class="label text-third-text-color text-sm">Categories</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">7</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">6</div>
         <div class="label text-third-text-color text-sm">Posts</div>
     </a>
 </div>
@@ -375,17 +375,16 @@
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2025/09/19/H2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%BC%8F%E6%B4%9E/">
-                            H2数据库相关漏洞
+                        <a href="/2025/09/19/JDBC-mysql%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/">
+                            JDBC mysql任意文件读取漏洞
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            H2 Database是一个纯Java编写的关系型数据库，可以在内存中运行，通常用在小型的应用，自带一个web管理页面,这个H2管理web应用存在一些远程代码执行漏洞,默认不开启，如果开启,默认是不对外开放的,只能本地访问(但是可以配合ssrf漏洞来攻击)
-相关配置
-1234spring.h2.console.path=/h2-console   # 自定义访问路径spring.h2.con...
+                            读文件当我们可以控制jdbc mysql连接的时候,我们可以通过设置如下这几个参数通过连接恶意mysql服务器来达到任意文件读取的危害
+1234567文件读取的参数allowLoadLocalInfileInPath=/ 设置读的目录为根目录，这样所有的目录文件都可以读取allowLoadLocalInfile=true 允许mysql读取客户端本地文件allowUrlInLocalInfi...
                         
                     </div>
 
@@ -406,7 +405,7 @@
                     
                         <li>
                             
-                            <a href="/tags/redTeam/">redTeam</a>&nbsp;
+                            <a href="/tags/javaSec/">javaSec</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -414,7 +413,7 @@
         
     </div>
 
-    <a href="/2025/09/19/H2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%BC%8F%E6%B4%9E/">Read more<span class="seo-reader-text">H2数据库相关漏洞</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2025/09/19/JDBC-mysql%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/">Read more<span class="seo-reader-text">JDBC mysql任意文件读取漏洞</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -484,16 +483,17 @@ ServerStatusDiffInterceptor链(最常用)123456789101112131415161718192021import
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2025/09/19/JDBC-mysql%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/">
-                            JDBC mysql任意文件读取漏洞
+                        <a href="/2025/09/19/H2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%BC%8F%E6%B4%9E/">
+                            H2数据库相关漏洞
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             
-                            读文件当我们可以控制jdbc mysql连接的时候,我们可以通过设置如下这几个参数通过连接恶意mysql服务器来达到任意文件读取的危害
-1234567文件读取的参数allowLoadLocalInfileInPath=/ 设置读的目录为根目录，这样所有的目录文件都可以读取allowLoadLocalInfile=true 允许mysql读取客户端本地文件allowUrlInLocalInfi...
+                            H2 Database是一个纯Java编写的关系型数据库，可以在内存中运行，通常用在小型的应用，自带一个web管理页面,这个H2管理web应用存在一些远程代码执行漏洞,默认不开启，如果开启,默认是不对外开放的,只能本地访问(但是可以配合ssrf漏洞来攻击)
+相关配置
+1234spring.h2.console.path=/h2-console   # 自定义访问路径spring.h2.con...
                         
                     </div>
 
@@ -514,7 +514,7 @@ ServerStatusDiffInterceptor链(最常用)123456789101112131415161718192021import
                     
                         <li>
                             
-                            <a href="/tags/javaSec/">javaSec</a>&nbsp;
+                            <a href="/tags/redTeam/">redTeam</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -522,76 +522,7 @@ ServerStatusDiffInterceptor链(最常用)123456789101112131415161718192021import
         
     </div>
 
-    <a href="/2025/09/19/JDBC-mysql%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E6%BC%8F%E6%B4%9E/">Read more<span class="seo-reader-text">JDBC mysql任意文件读取漏洞</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/08/11/Jackson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">
-                            Jackson反序列化
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            
-                            解决多态问题一、DefaultTyping设置
-
-
-DefaultTyping类型
-描述说明
-
-
-
-JAVA_LANG_OBJECT
-属性的类型为Object
-
-
-OBJECT_AND_NON_CONCRETE
-属性的类型为Object、Interface、AbstractClass
-
-
-NON_CONCRETE_AND_ARRAYS
-属性的类型为Object、Interface、Abstr...
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Mon Aug 11 2025 12:11:33 GMT+0800">
-                
-                    2025-08-11
-                
-            </span>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/javaSec/">javaSec</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/08/11/Jackson%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">Read more<span class="seo-reader-text">Jackson反序列化</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2025/09/19/H2%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9B%B8%E5%85%B3%E6%BC%8F%E6%B4%9E/">Read more<span class="seo-reader-text">H2数据库相关漏洞</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -789,7 +720,7 @@ ide...
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        7 posts in total
+                        6 posts in total
                     </span>
                     
                 </p>
